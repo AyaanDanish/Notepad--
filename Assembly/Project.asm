@@ -101,7 +101,7 @@ EditMenu byte	" File opened successfully. What would you like to do with the fil
 				"  2. Add text to the file", Newline,
 				"  3. Merge two files together", Newline,
 				"  4. Change the case of the text", Newline,
-				"  5. Delete a character from the file", Newline,
+				"  5. Delete a word from the file", Newline,
 				"  6. Reverse the contents of the file", Newline,
 				"  7. File Security", Newline,
 				"  0. Return to main menu",Newline,Newline,
@@ -442,7 +442,7 @@ ReadExisting PROC
 ReadExisting ENDP
 
 
-;Done
+
 SearchProc PROC
 	mWrite " Enter your search string: " 
 	mov edx, offset searchWord
@@ -499,7 +499,7 @@ SearchProc PROC
 	ret
 SearchProc ENDP
 
-;Done
+
 AddToEndProc PROC
 	call clrscr
 	invoke clearbuffer, addr buffer2
@@ -535,7 +535,7 @@ AddToEndProc PROC
 	ret
 AddToEndProc ENDP
 
-;Done
+
 ChangeCaseProc PROC
 	mov edx, offset casemenu
 	call writestring
@@ -680,7 +680,7 @@ ChangeCaseProc PROC
 	ret
 ChangeCaseProc ENDP
 
-;Done
+
 DeleteCharProc PROC
 	mwrite "What word would you like to delete: "
 	mov edx, offset deleteWord
@@ -725,7 +725,7 @@ DeleteCharProc PROC
 	ret
 DeleteCharProc ENDP
 
-;Done
+
 ReverseFileProc PROC
 	mov ecx, numchars
 	mov esi, offset buffer
@@ -749,7 +749,7 @@ ReverseFileProc PROC
 	ret
 ReverseFileProc ENDP
 
-;Done
+
 MergeProc PROC
 	invoke clearbuffer, addr buffer2
 
@@ -808,10 +808,11 @@ MergeProc PROC
 	ret
 MergeProc ENDP 
 
+
 Security PROC
 	invoke clearbuffer, addr buffer2
 	invoke clearbuffer, addr buffer3
-	mwrite " Enter name of encrypted file: "
+	mwrite " Enter name of file to encrypt/decrypt: "
 	mov edx, offset encryptedName
 	mov ecx, lengthof encryptedName
 	call readstring ; Read name of encrypted file
